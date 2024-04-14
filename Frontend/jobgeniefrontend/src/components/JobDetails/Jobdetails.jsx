@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const Jobdetails = () => {
   const jobdetails = useSelector((state) => state.jobdetails.jobdetails);
@@ -24,6 +25,8 @@ const Jobdetails = () => {
   jobdetails.job_description.split(/\n/).forEach((line) => {
     jobd += `${line.trim()}\n`;
   });
+  // console.log(jobq);
+  // console.log(jobd);
 
   return (
     <div className="component-container">
