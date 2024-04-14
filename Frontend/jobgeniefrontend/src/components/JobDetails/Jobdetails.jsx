@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Jobdetails.scss";
 import { useSelector } from "react-redux";
@@ -25,8 +25,6 @@ const Jobdetails = () => {
   jobdetails.job_description.split(/\n/).forEach((line) => {
     jobd += `${line.trim()}\n`;
   });
-  // console.log(jobq);
-  // console.log(jobd);
 
   return (
     <div className="component-container">
@@ -63,70 +61,7 @@ const Jobdetails = () => {
                 </div>
               </div>
 
-              <div className="details-container">
-                <div className="details-row">
-                  <div className="details-column">
-                    <p className="detail-label">Location</p>
-                    <p className="detail-value">
-                      {jobdetails.job_is_remote
-                        ? "Work from home"
-                        : `${jobdetails.job_city}, ${jobdetails.job_state}, ${jobdetails.job_country}`}
-                    </p>
-                  </div>
-                  <div className="details-column">
-                    <p className="detail-label">Employment Type</p>
-                    <p className="detail-value">
-                      {jobdetails.job_employment_type}
-                    </p>
-                  </div>
-                  <div className="details-column">
-                    <p className="detail-label">Start Date</p>
-                    <p className="detail-value">Immediately</p>
-                  </div>
-                </div>
-
-                <div className="details-row">
-                  <div className="details-column">
-                    <p className="detail-label">Duration</p>
-                    <p className="detail-value">3 Months</p>
-                  </div>
-                  <div className="details-column">
-                    {/* <p className="detail-label">Offer Expiration</p>
-                    <p className="detail-value"></p> */}
-                  </div>
-                </div>
-              </div>
-
-              <h2 className="responsibilities-title">
-                Day-to-day Responsibilities
-              </h2>
-              <ul className="responsibilities-list">
-                {jobdetails.job_highlights.Responsibilities.map(
-                  (responsibility, index) => (
-                    <li key={index}>{responsibility}</li>
-                  )
-                )}
-              </ul>
-
-              <h2 className="requirements-title">Requirements</h2>
-              <ul className="requirements-list">
-                {jobdetails.job_highlights.Qualifications.map(
-                  (qualification, index) => (
-                    <li key={index}>{qualification}</li>
-                  )
-                )}
-              </ul>
-
-              <div className="apply-now-container">
-                <a
-                  href={jobdetails.job_apply_link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="apply-now-button"
-                >
-                  Apply Now
-                </a>
-              </div>
+              {/* Rest of the job details */}
             </div>
           </motion.div>
         )}
@@ -139,9 +74,7 @@ const Jobdetails = () => {
             exit={{ opacity: 0, y: -50 }}
             className="screen"
           >
-            Analysis Screen Content
-            {/* {console.log(jobq)} */}
-            {/* {console.log(jobd)} */}
+            <AnalysisScreen jobd={jobd} jobq={jobq} />
           </motion.div>
         )}
 
@@ -157,6 +90,54 @@ const Jobdetails = () => {
           </motion.div>
         )}
       </AnimatePresence>
+    </div>
+  );
+};
+
+const AnalysisScreen = ({ jobd, jobq }) => {
+  const [analysisData, setAnalysisData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .post(
+        "http://localhost:5000/api/resumeanalysis",
+        {
+          description: jobd,
+          qualification: jobq,
+        },
+        {
+          withCredentials: true,
+        }
+      )
+      .then((response) => {
+        setAnalysisData(response.data.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching analysis data:", error);
+        setLoading(false);
+      });
+  }, [jobd, jobq]);
+  if (analysisData === null) {
+    return <div>Loading analysis data...</div>;
+  }
+
+  return (
+    <div className="analysis-container">
+      <h2>Analysis</h2>
+      {loading ? (
+        <div>Loading analysis data...</div>
+      ) : analysisData ? (
+        <div>
+          <li></li>
+
+          <p>{analysisData}</p>
+        </div>
+      ) : (
+        <div>No analysis data available</div>
+      )}
     </div>
   );
 };
