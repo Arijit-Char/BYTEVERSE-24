@@ -1,5 +1,11 @@
 # JobGenie: Revolutionizing Job Search
 
+## Overview Video
+[Link to Overview Video](https://youtu.be/bTVPZqSpP0Y)
+
+## Presentation Link
+[Link to Presentation ](https://www.slideshare.net/slideshow/jobgenie-revolutionizing-job-search-with-technology/267185199)
+
 ## Description
 JobGenie is a cutting-edge job search platform that leverages AI technology to streamline the job search process. It offers personalized job recommendations and clear rejection insights, making it easier for users to find their dream jobs. This project aims to address the inefficiencies in traditional job search processes by providing tailored solutions to job seekers' needs.
 
@@ -51,8 +57,5 @@ JobGenie offers personalized job recommendations and insights to streamline the 
 
 ## Declaration of Previous Work
 This project is a continuation of the previous version available at (https://github.com/Arijit-Char/JobGenie). For this hackathon period, the resume analysis section has been implemented as per the job description and user's resume, including the backend.
-
-## Overview Video
-[Link to Overview Video](https://youtu.be/bTVPZqSpP0Y)
 
 **Please Note:** This project is not 100% complete due to time constraints, but it provides a solid foundation for further development and enhancement.
