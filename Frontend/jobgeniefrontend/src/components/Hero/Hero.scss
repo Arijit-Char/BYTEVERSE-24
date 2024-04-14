@@ -1,0 +1,57 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 91vh;
+  background-color: #f8f8f8;
+  gap: 5rem;
+
+  .resume {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .MuiButton-root {
+      height: 4rem;
+      width: 10rem;
+      background-color: #007bff;
+      color: #fff;
+
+      &:hover {
+        background-color: #0056b3;
+      }
+
+      .MuiButton-startIcon {
+        color: #fff;
+      }
+    }
+  }
+
+  .bodytext {
+    margin-left: 20px;
+
+    h1 {
+      font-size: 36px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 20px;
+      font-weight: normal;
+      color: #666;
+    }
+  }
+}
+.grpbtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  .uploadbtn {
+    height: 3rem !important;
+    width: 5rem !important;
+    background-color: #3c82c8 !important;
+  }
+}

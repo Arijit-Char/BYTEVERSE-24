@@ -1,0 +1,16 @@
+.perjobliscard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 5rem;
+  padding: 8rem;
+
+}
+
+.employer-logo {
+    height: 13rem; 
+    width: 90%; 
+    object-fit: cover; 
+  }
+  
