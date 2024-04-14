@@ -1,7 +1,7 @@
 # JobGenie: Revolutionizing Job Search
 
 ## Overview Video
-[Link to Overview Video](https://youtu.be/bTVPZqSpP0Y)
+[Link to Overview Video](https://youtu.be/G75oRrBvCeU)
 
 ## Presentation Link
 [Link to Presentation ](https://www.slideshare.net/slideshow/jobgenie-revolutionizing-job-search-with-technology/267185199)
