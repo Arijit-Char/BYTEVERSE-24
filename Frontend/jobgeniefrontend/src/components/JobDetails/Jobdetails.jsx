@@ -45,7 +45,7 @@ const Jobdetails = () => {
             exit={{ opacity: 0, y: -50 }}
             className="screen"
           >
-            <div className="job-container">
+             <div className="job-container">
               <div className="employer-details">
                 <img
                   src={jobdetails.employer_logo}
@@ -61,7 +61,70 @@ const Jobdetails = () => {
                 </div>
               </div>
 
-              {/* Rest of the job details */}
+              <div className="details-container">
+                <div className="details-row">
+                  <div className="details-column">
+                    <p className="detail-label">Location</p>
+                    <p className="detail-value">
+                      {jobdetails.job_is_remote
+                        ? "Work from home"
+                        : `${jobdetails.job_city}, ${jobdetails.job_state}, ${jobdetails.job_country}`}
+                    </p>
+                  </div>
+                  <div className="details-column">
+                    <p className="detail-label">Employment Type</p>
+                    <p className="detail-value">
+                      {jobdetails.job_employment_type}
+                    </p>
+                  </div>
+                  <div className="details-column">
+                    <p className="detail-label">Start Date</p>
+                    <p className="detail-value">Immediately</p>
+                  </div>
+                </div>
+
+                <div className="details-row">
+                  <div className="details-column">
+                    <p className="detail-label">Duration</p>
+                    <p className="detail-value">3 Months</p>
+                  </div>
+                  <div className="details-column">
+                    {/* <p className="detail-label">Offer Expiration</p>
+                    <p className="detail-value"></p> */}
+                  </div>
+                </div>
+              </div>
+
+              <h2 className="responsibilities-title">
+                Day-to-day Responsibilities
+              </h2>
+              <ul className="responsibilities-list">
+                {jobdetails.job_highlights.Responsibilities.map(
+                  (responsibility, index) => (
+                    <li key={index}>{responsibility}</li>
+                  )
+                )}
+              </ul>
+
+              <h2 className="requirements-title">Requirements</h2>
+              <ul className="requirements-list">
+                {jobdetails.job_highlights.Qualifications.map(
+                  (qualification, index) => (
+                    <li key={index}>{qualification}</li>
+                  )
+                )}
+              </ul>
+
+              <div className="apply-now-container">
+                <a
+                  href={jobdetails.job_apply_link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="apply-now-button"
+                >
+                  Apply Now
+                </a>
+              </div>
             </div>
           </motion.div>
         )}
